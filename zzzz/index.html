@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报价单生成系统</title>
+    <link rel="stylesheet" href="css/style.css"> 
+	<link rel="stylesheet" href="css/all.min.css">
+    <script src="js/jspdf.umd.min.js"defer></script>
+    <script src="js/html2canvas.min.js"defer></script>
+    <script type="module" src="js/main.js" defer></script>
+
+</head>
+<body>
+    <div id="loader-container" class="loader-container" style="display:none;">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">加载中...</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
+                <div class="loader-progress-text">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product-selector">
+            <h2>产品选择</h2>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索产品..." aria-label="搜索产品">
+            </div>
+            <div class="product-list" id="product-list"></div>
+        </div>
+        
+        <div class="quotation-preview">
+            <h2>报价单预览</h2>
+            <div class="quotation-document" id="quotation-document">
+                <div class="quotation-header">
+                    <div>
+                        <h1>七彩天空报价单</h1>
+                        <p>公司名称: <span contenteditable="true" aria-label="公司名称">ABC科技有限公司</span></p>
+                        <p>联系电话: <span contenteditable="true" aria-label="联系电话">13800138000</span></p>
+                    </div>
+                    <div>
+                        <p><strong>报价单号:</strong> <span id="quotation-number">QT-20230001</span></p>
+                        <p><strong>日期:</strong> <span id="quotation-date">2023年1月1日</span></p>
+                        <p><strong>有效期:</strong> <span id="valid-until">2023年2月1日</span></p>
+                    </div>
+                </div>
+                
+                <table class="product-table" id="product-table">
+                    <thead>
+                        <tr>
+                            <th>图片</th>
+                            <th>产品名称</th>
+                            <th>规格</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="selected-products"></tbody>
+                </table>
+                
+                <div class="totals" id="totals"></div>
+                
+                <div class="quotation-footer">
+                    <p>备注: <span contenteditable="true" aria-label="备注信息">本报价单有效期为30天</span></p>
+                    <p class="print-only">打印时间: <span id="print-time"></span></p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="add-product" id="add-product-btn">+ 添加产品</button>
+                <button class="preview-pdf" id="preview-pdf-btn">预览PDF</button>
+                <button class="generate-pdf" id="generate-pdf-btn">生成PDF</button>
+                <button class="save-quotation" id="save-quotation-btn">保存报价单</button>
+                <button class="load-quotation" id="load-quotation-btn">加载报价单</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
